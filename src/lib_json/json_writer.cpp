@@ -312,7 +312,8 @@ static String valueToQuotedStringN(const char* value, unsigned length) {
     // sequence.
     // Should add a flag to allow this compatibility mode and prevent this
     // sequence from occurring.
-    default: {
+/*     default:
+	{
       unsigned int cp = utf8ToCodepoint(c, end);
       // don't escape non-control characters
       // (short escape sequence are applied above)
@@ -329,7 +330,11 @@ static String valueToQuotedStringN(const char* value, unsigned length) {
         result += "\\u";
         result += toHex16Bit((cp & 0x3FF) + 0xDC00);
       }
-    } break;
+    } 
+		break; */
+	default:
+		result += *c;
+		break;
     }
   }
   result += "\"";
